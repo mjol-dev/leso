@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "leso"
+version = "0.1.0"
+description = "Lightweight Experiment Sweep / Orchestrator over LETF"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["leso"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

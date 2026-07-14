@@ -18,4 +18,4 @@ Portfolio stack: **LESO** (many + select) → **LETF** (one experiment) → opti
 
 ## Status
 
-Orientation / README only. SweepConfig and implementation next.
+SweepConfig load/validate and grid expansion are implemented (with unit tests). Materialize next.

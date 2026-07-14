@@ -1,0 +1,5 @@
+name: tiny-lr-sweep
+base: ../letf-monitoring/examples/mnist.yaml
+grid:
+  hparams.lr: [0.01, 0.001]
+  hparams.batch_size: [64]
