@@ -18,4 +18,4 @@ Portfolio stack: **LESO** (many + select) → **LETF** (one experiment) → opti
 
 ## Status
 
-SweepConfig, grid expansion, and materialize (base + overlay → trial YAML) are implemented with unit tests. N× letf run next.
+SweepConfig, expand, materialize, and sequential N× `letf run` (scheduler) are implemented with unit tests. Track next.
