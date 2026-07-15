@@ -1,0 +1,7 @@
+name: fixture-base
+train: builtin:mnist
+seed: 42
+hparams:
+  epochs: 1
+  batch_size: 64
+  lr: 0.01
