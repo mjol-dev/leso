@@ -18,4 +18,4 @@ Portfolio stack: **LESO** (many + select) → **LETF** (one experiment) → opti
 
 ## Status
 
-SweepConfig, expand, materialize, and sequential N× `letf run` (scheduler) are implemented with unit tests. Track next.
+SweepConfig, expand, materialize, sequential N× `letf run`, and track (sweep manifest) are implemented with unit tests. Rank next.
