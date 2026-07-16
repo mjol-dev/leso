@@ -8,3 +8,5 @@ build/
 venv/
 .env
 .pytest_cache/
+sweeps/
+experiments/

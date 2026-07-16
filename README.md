@@ -16,6 +16,33 @@ Portfolio stack: **LESO** (many + select) → **LETF** (one experiment) → opti
 
 `expand grid` → `materialize trial config` → `N× letf run` → `track` → `rank`
 
+## Setup
+
+Python 3.10+. LETF must be installed and on `PATH` for real sweeps (tests use a stub).
+
+```bash
+python -m venv .venv
+# Windows: .\.venv\Scripts\Activate.ps1
+pip install -e ".[dev]"
+```
+
+## Quickstart
+
+```bash
+# Full sweep (creates sweeps/<sweep_id>/ with trials, experiments, manifest, summary)
+leso run examples/tiny_sweep.yaml
+```
+
+Sweep layout:
+
+```text
+sweeps/<sweep_id>/
+  trials/trial_XXX/config.yaml
+  experiments/<run_id>/
+  sweep_manifest.jsonl
+  sweep_summary.json
+```
+
 ## Status
 
-Core runner sequence implemented with unit tests: SweepConfig, expand, materialize, sequential N× `letf run`, track (manifest), and rank (`final_loss`, lower better → `sweep_summary.json`). CLI / end-to-end sweep orchestration next.
+MVP runner sequence wired end-to-end: `leso run <sweep.yaml>` → expand → materialize → N× `letf run` → track → rank (`final_loss`).

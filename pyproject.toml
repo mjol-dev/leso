@@ -9,11 +9,15 @@ description = "Lightweight Experiment Sweep / Orchestrator over LETF"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "click",
     "pyyaml",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest"]
+
+[project.scripts]
+leso = "leso.cli:cli"
 
 [tool.hatch.build.targets.wheel]
 packages = ["leso"]

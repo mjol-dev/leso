@@ -1,12 +1,6 @@
-"""Minimal LETF CLI stub for scheduler tests.
-
-Usage: python fake_letf.py run <config.yaml> --root <dir> [--device cpu]
-"""
-
-from __future__ import annotations
-
 import argparse
 import hashlib
+import json
 from pathlib import Path
 
 
@@ -28,11 +22,16 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     digest = hashlib.sha1(str(config.resolve()).encode()).hexdigest()[:8]
+    loss = (int(digest[:2], 16) % 50) / 100.0
     run_id = f"stub_{digest}"
     run_dir = Path(args.root) / run_id
     run_dir.mkdir(parents=True, exist_ok=True)
+    summary = {
+        "status": "completed",
+        "result": {"metrics": {"final_loss": loss, "epochs": 1}, "artifacts": {}},
+    }
     (run_dir / "summary.json").write_text(
-        '{"status": "completed"}\n',
+        json.dumps(summary, indent=2) + "\n",
         encoding="utf-8",
     )
 
