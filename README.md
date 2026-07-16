@@ -18,4 +18,4 @@ Portfolio stack: **LESO** (many + select) → **LETF** (one experiment) → opti
 
 ## Status
 
-SweepConfig, expand, materialize, sequential N× `letf run`, and track (sweep manifest) are implemented with unit tests. Rank next.
+Core runner sequence implemented with unit tests: SweepConfig, expand, materialize, sequential N× `letf run`, track (manifest), and rank (`final_loss`, lower better → `sweep_summary.json`). CLI / end-to-end sweep orchestration next.
