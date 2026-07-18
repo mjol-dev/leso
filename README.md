@@ -1,8 +1,8 @@
 # LESO — Lightweight Experiment Sweep / Orchestrator
 
-Multi-run hyperparameter sweeps that drive [LETF](https://github.com/mjol-dev/letf-monitoring) per trial and rank results (including AWO metrics when present in run dirs).
+Multi-run hyperparameter sweeps that drive [LETF](https://github.com/mjol-dev/letf-monitoring) per trial and rank by training metric (`final_loss` in v0.1).
 
-Portfolio stack: **LESO** (many + select) → **LETF** (one experiment) → optional **AWO** (inside each LETF run).
+Portfolio stack: **LESO** (many + select) → **LETF** (one experiment) → optional **AWO** (inside each LETF run; not used for ranking yet).
 
 ## Place / purpose / I/O
 
