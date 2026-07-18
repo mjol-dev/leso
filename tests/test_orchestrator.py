@@ -4,10 +4,19 @@ from pathlib import Path
 
 from click.testing import CliRunner
 
-from leso.cli import cli
+from leso.cli import _parse_letf_cmd, cli
 from leso.config import parse_config
 from leso.orchestrator import SweepRunResult, resolve_base_path, run_sweep
 from leso.ranker import RankedTrial
+
+
+def test_parse_letf_cmd_splits_stub_invocation():
+    parsed = _parse_letf_cmd("python tests/fixtures/fake_letf.py")
+    assert parsed == ["python", "tests/fixtures/fake_letf.py"]
+
+
+def test_parse_letf_cmd_keeps_simple_name():
+    assert _parse_letf_cmd("letf") == "letf"
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
 FAKE_LETF = FIXTURES / "fake_letf.py"

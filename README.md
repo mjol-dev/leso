@@ -29,9 +29,20 @@ pip install -e ".[dev]"
 ## Quickstart
 
 ```bash
-# Full sweep (creates sweeps/<sweep_id>/ with trials, experiments, manifest, summary)
+# Full sweep with real LETF on PATH (needs sibling letf-monitoring / installed letf)
 leso run examples/tiny_sweep.yaml
 ```
+
+### Stub dry-run (no real LETF)
+
+Uses the in-repo fixture base config and `tests/fixtures/fake_letf.py`:
+
+```bash
+# From the LESO repo root, after pip install -e ".[dev]"
+leso run examples/tiny_sweep_local.yaml --letf "python tests/fixtures/fake_letf.py"
+```
+
+This still creates `sweeps/<sweep_id>/` with trials, experiments, manifest, and summary.
 
 Sweep layout:
 

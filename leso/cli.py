@@ -2,9 +2,18 @@
 
 from __future__ import annotations
 
+import os
+import shlex
+
 import click
 
 from leso.orchestrator import run_sweep
+
+
+def _parse_letf_cmd(letf_cmd: str) -> str | list[str]:
+    """Allow ``--letf "python path/to/fake_letf.py"`` for stub dry-runs."""
+    parts = shlex.split(letf_cmd, posix=(os.name != "nt"))
+    return parts if len(parts) > 1 else letf_cmd
 
 
 @click.group()
@@ -26,7 +35,7 @@ def cli() -> None:
     "letf_cmd",
     default="letf",
     show_default=True,
-    help="LETF executable name or path.",
+    help='LETF executable, or a quoted command e.g. "python tests/fixtures/fake_letf.py".',
 )
 def run_cmd(config: str, sweep_root: str, device: str, letf_cmd: str) -> None:
     """Run a full sweep from a Sweep YAML."""
@@ -34,7 +43,7 @@ def run_cmd(config: str, sweep_root: str, device: str, letf_cmd: str) -> None:
         config,
         sweep_root=sweep_root,
         device=device,
-        letf_cmd=letf_cmd,
+        letf_cmd=_parse_letf_cmd(letf_cmd),
     )
     click.echo(f"Sweep completed: {result.sweep_id}")
     click.echo(f"Directory: {result.sweep_dir}")

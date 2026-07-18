@@ -1,0 +1,5 @@
+name: tiny-local-sweep
+base: ../tests/fixtures/base_experiment.yaml
+grid:
+  hparams.lr: [0.01, 0.001]
+  hparams.batch_size: [64]
