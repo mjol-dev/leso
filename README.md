@@ -33,6 +33,14 @@ pip install -e ".[dev]"
 leso run examples/tiny_sweep.yaml
 ```
 
+### Short real-LETF smoke
+
+Same sibling MNIST base, but overlays `hparams.max_batches: 1` so each trial does one batch per epoch (quick demo; still needs `letf` on `PATH` and a first-time MNIST download):
+
+```bash
+leso run examples/tiny_sweep_smoke.yaml
+```
+
 ### Stub dry-run (no real LETF)
 
 Uses the in-repo fixture base config and `tests/fixtures/fake_letf.py`:
