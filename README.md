@@ -52,6 +52,14 @@ leso run examples/tiny_sweep_local.yaml --letf "python tests/fixtures/fake_letf.
 
 This still creates `sweeps/<sweep_id>/` with trials, experiments, manifest, and summary.
 
+### Inspect a finished sweep
+
+```bash
+leso status sweeps/<sweep_id>
+```
+
+Prints best trial (from `sweep_summary.json`) and each manifest row with score when available.
+
 Sweep layout:
 
 ```text
@@ -64,4 +72,4 @@ sweeps/<sweep_id>/
 
 ## Status
 
-MVP runner sequence wired end-to-end: `leso run <sweep.yaml>` → expand → materialize → N× `letf run` → track → rank (`final_loss`).
+MVP runner sequence wired end-to-end: `leso run <sweep.yaml>` → expand → materialize → N× `letf run` → track → rank (`final_loss`). `leso status <sweep_dir>` inspects a finished sweep.

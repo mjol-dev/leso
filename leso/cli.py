@@ -8,6 +8,7 @@ import shlex
 import click
 
 from leso.orchestrator import run_sweep
+from leso.status import format_status_report
 
 
 def _parse_letf_cmd(letf_cmd: str) -> str | list[str]:
@@ -55,6 +56,16 @@ def run_cmd(config: str, sweep_root: str, device: str, letf_cmd: str) -> None:
                 f"({best.metric}={best.score}) run_id={best.run_id}"
             )
         click.echo(f"Summary: {result.sweep_dir / 'sweep_summary.json'}")
+
+
+@cli.command("status")
+@click.argument(
+    "sweep_dir",
+    type=click.Path(exists=True, file_okay=False, path_type=str),
+)
+def status_cmd(sweep_dir: str) -> None:
+    """Print trial inventory and ranking for a finished sweep directory."""
+    click.echo(format_status_report(sweep_dir), nl=False)
 
 
 if __name__ == "__main__":
